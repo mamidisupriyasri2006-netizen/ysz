@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DreamBoard – Masonry Grid</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  background:#0f0f0f;
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+  padding-bottom:90px;
+  margin:0;
+}
+
+/* Navbar */
+.navbar{
+  background:#000;
+  position: sticky;
+  top:0;
+  z-index: 999;
+}
+.navbar-brand{
+  font-size:20px;
+  font-weight:600;
+  color:#ff5d8f;
+}
+.navbar .logo {
+  height:30px;
+  width:30px;
+}
+
+/* Categories */
+.category span{
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:14px;
+}
+
+/* Pinterest Grid Cards */
+.pin-card {
+  background:#1c1c1c;
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+  margin-bottom:15px;
+  cursor:pointer;
+  transition: transform 0.2s;
+}
+.pin-card img {
+  width:100%;
+  display:block;
+  border-radius:16px;
+}
+.pin-card:hover {
+  transform: scale(1.02);
+}
+.save-btn {
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:#ff5d8f;
+  color:#fff;
+  border:none;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+  opacity:0.9;
+}
+
+/* Bottom Nav */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#000;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  border-top:1px solid #222;
+  z-index:999;
+}
+.bottom-nav a{
+  color:#aaa;
+  font-size:22px;
+  text-decoration:none;
+}
+.bottom-nav a:hover{
+  color:#ff5d8f;
+}
+</style>
+</head>
+<body id="top">
+
+<!-- NAVBAR -->
+<nav class="navbar px-3 d-flex justify-content-between align-items-center">
+  <span class="navbar-brand">🌙 DreamBoard</span>
+  <img src="https://picsum.photos/30" class="logo rounded-circle">
+</nav>
+
+<!-- CATEGORIES -->
+<div class="container my-3">
+  <div class="d-flex gap-2 overflow-auto category">
+    <span class="badge bg-light text-dark">For You</span>
+    <span class="badge bg-secondary">Travel</span>
+    <span class="badge bg-secondary">Fashion</span>
+    <span class="badge bg-secondary">Design</span>
+    <span class="badge bg-secondary">Ideas</span>
+  </div>
+</div>
+
+<!-- PIN GRID (MASONRY) -->
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3" style="--bs-gutter-x: 1rem; --bs-gutter-y: 1rem;" data-bs-toggle="masonry">
+    
+    <!-- 12 Images -->
+    <div class="col"><div class="pin-card" data-bs-toggle="modal" data-bs-target="#imageModal1"><button class="save-btn">Save</button><img src="https://picsum.photos/300/450?random=1"></div></div>
+    <div class="col"><div class="pin-card" data-bs-toggle="modal" data-bs-target="#imageModal2"><button class="save-btn">Save</button><img src="https://picsum.photos/300/360?random=2"></div></div>
+    <div class="col"><div class="pin-card" data-bs-toggle="modal" data-bs-target="#imageModal3"><button class="save-btn">Save</button><img src="https://picsum.photos/300/520?random=3"></div></div>
+    <div class="col"><div class="pin-card" data-bs-toggle="modal" data-bs-target="#imageModal4"><button class="save-btn">Save</button><img src="https://picsum.photos/300/400?random=4"></div></div>
+    <div class="col"><div class="pin-card" data-bs-toggle="modal" data-bs-target="#imageModal5"><button class="save-btn">Save</button><img src="https://picsum.photos/300/480?random=5"></div></div>
+    <div class="col"><div class="pin-card" data-bs-toggle="modal" data-bs-target="#imageModal6"><button class="save-btn">Save</button><img src="https://picsum.photos/300/390?random=6"></div></div>
+    <div class="col"><div class="pin-card" data-bs-toggle="modal" data-bs-target="#imageModal7"><button class="save-btn">Save</button><img src="https://picsum.photos/300/500?random=7"></div></div>
+    <div class="col"><div class="pin-card" data-bs-toggle="modal" data-bs-target="#imageModal8"><button class="save-btn">Save</button><img src="https://picsum.photos/300/370?random=8"></div></div>
+    <div class="col"><div class="pin-card" data-bs-toggle="modal" data-bs-target="#imageModal9"><button class="save-btn">Save</button><img src="https://picsum.photos/300/460?random=9"></div></div>
+    <div class="col"><div class="pin-card" data-bs-toggle="modal" data-bs-target="#imageModal10"><button class="save-btn">Save</button><img src="https://picsum.photos/300/420?random=10"></div></div>
+    <div class="col"><div class="pin-card" data-bs-toggle="modal" data-bs-target="#imageModal11"><button class="save-btn">Save</button><img src="https://picsum.photos/300/480?random=11"></div></div>
+    <div class="col"><div class="pin-card" data-bs-toggle="modal" data-bs-target="#imageModal12"><button class="save-btn">Save</button><img src="https://picsum.photos/300/410?random=12"></div></div>
+
+  </div>
+</div>
+
+<!-- IMAGE MODALS (12) -->
+<!-- Modal template repeated for each image -->
+<script>
+for(let i=1;i<=12;i++){
+  document.write(`
+  <div class="modal fade" id="imageModal${i}" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-body p-0">
+          <img src="https://picsum.photos/300/${350 + i*20}?random=${i}" class="img-fluid w-100">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  `);
+}
+</script>
+
+<!-- SEARCH PANEL -->
+<div class="offcanvas offcanvas-top bg-dark text-white" id="searchCanvas">
+  <div class="offcanvas-header">
+    <h5>Search</h5>
+    <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <input type="text" class="form-control form-control-lg" placeholder="Search ideas, fashion...">
+  </div>
+</div>
+
+<!-- MESSAGE PANEL -->
+<div class="offcanvas offcanvas-end bg-dark text-white" id="messageCanvas">
+  <div class="offcanvas-header">
+    <h5>Messages</h5>
+    <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="bg-secondary p-2 rounded mb-2">Welcome to DreamBoard 👋</div>
+    <input type="text" class="form-control mt-3" placeholder="Type a message...">
+  </div>
+</div>
+
+<!-- PROFILE PANEL -->
+<div class="offcanvas offcanvas-end bg-dark text-white" id="profileCanvas">
+  <div class="offcanvas-header">
+    <h5>My Profile</h5>
+    <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="text-center mb-3">
+      <img src="https://picsum.photos/120" class="rounded-circle mb-2">
+      <h5>Supriya Mamidi</h5>
+      <p class="text-muted">DreamBoard Creator</p>
+    </div>
+    <p><strong>Email:</strong> mamidisupriyasri2006@gmail.com</p>
+    <p><strong>Phone:</strong> +91 9XXXXXXXXX</p>
+    <p><strong>Address:</strong> Hyderabad, India</p>
+    <button class="btn btn-outline-light w-100 mt-3">Edit Profile</button>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="#top"><i class="bi bi-house"></i></a>
+  <a data-bs-toggle="offcanvas" data-bs-target="#searchCanvas"><i class="bi bi-search"></i></a>
+  <a data-bs-toggle="offcanvas" data-bs-target="#messageCanvas"><i class="bi bi-chat"></i></a>
+  <a data-bs-toggle="offcanvas" data-bs-target="#profileCanvas"><i class="bi bi-person"></i></a>
+  <a href="#"><i class="bi bi-plus-square"></i></a>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
